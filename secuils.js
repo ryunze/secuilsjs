@@ -2,7 +2,7 @@
 
 class Secuils {
     
-    el;
+    el = null;
 
     constructor (el = null) {
         if (el != null) {
@@ -77,6 +77,11 @@ class Secuils {
             status: response.ok,
             data: json
         }
+    }
+
+    // URL Utils
+    redirect (url) {
+        window.location.replace(url);
     }
 
 
