@@ -39,6 +39,10 @@ class SecuilsDom {
         this.el = el;
     }
 
+    on (eventName, callback) {
+        this.el.addEventListener(eventName, callback);
+    }
+
     onClick (callback) {
         this.el.addEventListener('click', callback);
     }
