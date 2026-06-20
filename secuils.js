@@ -80,8 +80,12 @@ class Secuils {
     }
 
     // URL Utils
-    redirect (url) {
-        window.location.replace(url);
+    redirect (url, delay = null) {
+        if (delay != null) {
+            setTimeout(() => { window.location.replace(url); }, delay);
+        } else {
+            window.location.replace(url);
+        }
     }
 
 
