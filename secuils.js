@@ -4,41 +4,24 @@ class Secuils {
     
     el;
 
+    constructor (el = null) {
+        if (el != null) {
+            this.el = el;
+        }
+    }
+
+    // Selecotor
     find (elName) {
         this.el = document.querySelector(elName);
-        return new SecuilsDom(this.el);
+        return new Secuils(this.el);
     }
 
     findAll (elName) {
         this.el = document.querySelectorAll(elName);
-        return new SecuilsDom(this.el);
+        return new Secuils(this.el);
     }
 
-    async postJson (url, body) {
-
-        const response = await fetch(url, {
-            method: 'POST',
-            body: body
-        });
-
-        const json = await response.json();
-
-        return {
-            status: response.ok,
-            data: json
-        }
-    }
-
-}
-
-class SecuilsDom {
-    
-    el;
-    
-    constructor (el) {
-        this.el = el;
-    }
-
+    // Listener
     on (eventName, callback) {
         this.el.addEventListener(eventName, callback);
     }
@@ -63,17 +46,39 @@ class SecuilsDom {
 
     }
 
-    toggle (className) {
-        this.el.classList.toggle(className);
+    // DOM
+    disabled (status = true) {
+        this.el.disabled = status;
+    }
+
+    each (callback) {
+        this.el.forEach(callback);
     }
 
     text (content) {
         this.el.textContent = content;
     }
 
-    each (callback) {
-        this.el.forEach(callback);
+    toggle (className) {
+        this.el.classList.toggle(className);
     }
+
+    // Fetch
+    async postJson (url, body) {
+
+        const response = await fetch(url, {
+            method: 'POST',
+            body: body
+        });
+
+        const json = await response.json();
+
+        return {
+            status: response.ok,
+            data: json
+        }
+    }
+
 
 }
 
