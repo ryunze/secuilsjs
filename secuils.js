@@ -14,6 +14,21 @@ class Secuils {
         return new SecuilsDom(this.el);
     }
 
+    async postJson (url, body) {
+
+        const response = await fetch(url, {
+            method: 'POST',
+            body: body
+        });
+
+        const json = await response.json();
+
+        return {
+            status: response.ok,
+            data: json
+        }
+    }
+
 }
 
 class SecuilsDom {
@@ -33,7 +48,15 @@ class SecuilsDom {
     }
 
     onSubmit (callback) {
-        this.el.addEventListener('submit', callback);
+
+        this.el.addEventListener('submit', (event) => {
+
+            const formData = new FormData(event.target);
+			const objectData = Object.fromEntries(formData.entries());
+
+            callback(event, objectData);
+        });
+
     }
 
     toggle (className) {
