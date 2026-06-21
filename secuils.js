@@ -64,10 +64,25 @@ class Secuils {
     }
 
     // Fetch
-    async postJson (url, body) {
+    async post (url, body) {
 
         const response = await fetch(url, {
             method: 'POST',
+            body: body
+        });
+
+        const json = await response.json();
+
+        return {
+            status: response.ok,
+            data: json
+        }
+    }
+
+    async patch (url, body) {
+
+        const response = await fetch(url, {
+            method: 'PATCH',
             body: body
         });
 
