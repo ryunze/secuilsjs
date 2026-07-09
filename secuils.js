@@ -1,4 +1,10 @@
-/* Secuils JavaScript, ga perlu banyak ^_O */
+/*
+* Secuilsjs (Secuil kode-kode javascript)
+* Author: Ryunze
+* Version: 1.0
+* Created: Lupa
+* Updated: July, 9 2026
+*/
 
 class Secuils {
     
