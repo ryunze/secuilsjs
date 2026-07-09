@@ -16,7 +16,9 @@ class Secuils {
         }
     }
 
-    // Selecotor
+    /*
+    * DOM Selector
+    */
     find (elName) {
         this.el = document.querySelector(elName);
         return new Secuils(this.el);
@@ -27,7 +29,9 @@ class Secuils {
         return new Secuils(this.el);
     }
 
-    // Listener
+    /*
+    * DOM Listener
+    */
     on (eventName, callback) {
         this.el.addEventListener(eventName, callback);
     }
@@ -52,7 +56,9 @@ class Secuils {
 
     }
 
-    // DOM
+    /*
+    * DOM Utils
+    */
     disabled (status = true) {
         this.el.disabled = status;
     }
@@ -69,7 +75,9 @@ class Secuils {
         this.el.classList.toggle(className);
     }
 
-    // Fetch
+    /*
+    * HTTP (POST) Request
+    */
     async post (url, body) {
 
         const response = await fetch(url, {
@@ -85,6 +93,9 @@ class Secuils {
         }
     }
 
+    /*
+    * HTTP (PATCH) Request
+    */
     async patch (url, body) {
 
         const response = await fetch(url, {
@@ -100,7 +111,9 @@ class Secuils {
         }
     }
 
-    // URL Utils
+    /*
+    * URL Redirect
+    */
     redirect (url, delay = null) {
         if (delay != null) {
             setTimeout(() => { window.location.replace(url); }, delay);
@@ -112,4 +125,7 @@ class Secuils {
 
 }
 
+/*
+* Global Variable Initialization
+*/
 var $$ = new Secuils();
